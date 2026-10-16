@@ -19,7 +19,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950">
 
-    <!-- Glowing background elements (Emerald Theme) -->
+    <!-- Glowing background elements -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div class="absolute -top-40 -left-40 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl"></div>
         <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl"></div>
@@ -44,7 +44,7 @@
             <div class="text-center mb-8">
                 <div class="inline-flex p-3 rounded-2xl bg-emerald-500/10 text-emerald-400 mb-3 border border-emerald-500/20 text-2xl">⚡</div>
                 <h2 class="text-2xl font-extrabold tracking-tight text-white">Cabaran Minda Sejarah</h2>
-                <p class="text-xs text-slate-400 mt-1.5">Soalan muncul satu persatu. Jawab dengan pantas dan catat nama anda di papan kedudukan!</p>
+                <p class="text-xs text-slate-400 mt-1.5">Soalan muncul satu persatu lengkap dengan kesan bunyi interaktif!</p>
             </div>
             <form id="form-register" class="space-y-4">
                 <div>
@@ -59,24 +59,19 @@
             <div class="mt-8 pt-6 border-t border-slate-800/80">
                 <div class="flex justify-between items-center mb-3">
                     <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Papan Pendahulu Terkini</h3>
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" title="System Ready"></span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 </div>
-                <div id="mini-leaderboard" class="space-y-2 text-xs">
-                    <!-- Populated dynamically -->
-                </div>
+                <div id="mini-leaderboard" class="space-y-2 text-xs"></div>
             </div>
         </div>
 
-        <!-- 2. Quiz Screen (One by One) -->
+        <!-- 2. Quiz Screen -->
         <div id="screen-quiz" class="hidden w-full bg-slate-900/80 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/50 animate-fade-in">
             <div class="flex justify-between items-center mb-6">
-                <div class="flex items-center gap-2">
-                    <span id="question-tracker" class="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">Soalan 1 / 20</span>
-                </div>
+                <span id="question-tracker" class="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">Soalan 1 / 20</span>
                 <div id="timer-display" class="text-xs font-mono font-bold text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700/60">00:00</div>
             </div>
 
-            <!-- Progress bar modern -->
             <div class="w-full bg-slate-800 h-1.5 rounded-full mb-6 overflow-hidden">
                 <div id="progress-bar" class="bg-gradient-to-r from-emerald-500 to-teal-500 h-full w-[5%] transition-all duration-300"></div>
             </div>
@@ -85,9 +80,7 @@
                 <h3 id="question-text" class="text-base sm:text-lg font-bold text-white leading-relaxed"></h3>
             </div>
 
-            <div id="options-container" class="space-y-3 mb-6">
-                <!-- Options injected dynamically -->
-            </div>
+            <div id="options-container" class="space-y-3 mb-6"></div>
 
             <div class="flex justify-between items-center pt-2 border-t border-slate-800/80">
                 <button id="btn-hint" class="text-xs text-emerald-400/90 hover:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-2 rounded-xl font-medium transition flex items-center gap-1.5">💡 Petunjuk</button>
@@ -109,12 +102,8 @@
             </div>
 
             <div class="grid grid-cols-2 gap-3">
-                <button id="btn-review" class="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs transition border border-slate-700/80">
-                    🔍 Semak & Pembetulan
-                </button>
-                <button id="btn-leaderboard-view" class="py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-500/20 hover:brightness-110 transition">
-                    📊 Kedudukan Online
-                </button>
+                <button id="btn-review" class="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs transition border border-slate-700/80">🔍 Semak & Pembetulan</button>
+                <button id="btn-leaderboard-view" class="py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-500/20 hover:brightness-110 transition">📊 Kedudukan Online</button>
             </div>
         </div>
 
@@ -124,9 +113,7 @@
                 <h2 class="text-base font-bold text-white">Semakan & Pembetulan</h2>
                 <button id="btn-back-to-result" class="text-xs text-slate-400 hover:text-white font-semibold">Tutup ✕</button>
             </div>
-            <div id="review-container" class="space-y-3 overflow-y-auto pr-2 flex-grow text-left">
-                <!-- Detailed reviews inserted here -->
-            </div>
+            <div id="review-container" class="space-y-3 overflow-y-auto pr-2 flex-grow text-left"></div>
         </div>
 
         <!-- 5. Full Leaderboard Screen -->
@@ -135,19 +122,82 @@
                 <h2 class="text-base font-bold text-white">🏆 Papan Pendahulu Global</h2>
                 <button id="btn-close-leaderboard" class="text-xs text-slate-400 hover:text-white font-semibold">Kembali ✕</button>
             </div>
-            <div id="full-leaderboard-list" class="space-y-2.5 max-h-64 overflow-y-auto pr-2 mb-6 text-left">
-                <!-- Leaderboard rows -->
-            </div>
-            <button id="btn-restart" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-500/20 hover:brightness-110 transition">
-                Cuba Semula 🔄
-            </button>
+            <div id="full-leaderboard-list" class="space-y-2.5 max-h-64 overflow-y-auto pr-2 mb-6 text-left"></div>
+            <button id="btn-restart" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-500/20 hover:brightness-110 transition">Cuba Semula 🔄</button>
         </div>
 
     </main>
 
-    <!-- Footer -->
     <footer class="relative z-10 text-center py-4 text-[11px] text-slate-500 border-t border-slate-900">
         Modul Interaktif Sejarah Tingkatan 2 &bull; Edisi Hijau Moden 2026
+    </footer>
+
+    <!-- Script Logik Kuiz + Sound Effects (Web Audio API) -->
+    <script>
+        // Generator Kesan Bunyi Tanpa Fail Luaran
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (!audioCtx) return;
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            let now = audioCtx.currentTime;
+
+            if (type === 'click') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(400, now);
+                osc.frequency.exponentialRampToValueAtTime(800, now + 0.05);
+                gainNode.gain.setValueAtTime(0.05, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+                osc.start(now);
+                osc.stop(now + 0.05);
+            } else if (type === 'correct') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(523.25, now); // Nota C5
+                osc.frequency.setValueAtTime(659.25, now + 0.08); // Nota E5
+                osc.frequency.setValueAtTime(783.99, now + 0.16); // Nota G5
+                gainNode.gain.setValueAtTime(0.1, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                osc.start(now);
+                osc.stop(now + 0.35);
+            } else if (type === 'wrong') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(180, now);
+                osc.frequency.setValueAtTime(120, now + 0.1);
+                gainNode.gain.setValueAtTime(0.1, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+                osc.start(now);
+                osc.stop(now + 0.25);
+            }
+        }
+
+        const masterQuestionPool = [
+            { question: "Apakah maksud amalan 'Animisme' dalam kepercayaan masyarakat awal di Malaysia?", options: ["Percaya bahawa setiap benda mempunyai semangat", "Percaya kepada kuasa ghaib yang disebut mana", "Menyembah matahari, bulan dan bumi", "Mengamalkan ajaran Hindu secara mutlak"], correct: 0, hint: "Ia berkaitan dengan kepercayaan terhadap roh atau semangat pada alam sekeliling.", rationale: "Animisme ialah kepercayaan bahawa setiap benda mempunyai semangat atau roh." },
+            { question: "Apakah perbezaan utama antara Adat Perpatih dengan Adat Temenggung?", options: ["Adat Perpatih mengamalkan jurai keturunan ibu, manakala Adat Temenggung mengamalkan jurai keturunan bapa", "Adat Perpatih diamalkan di Johor, manakala Adat Temenggung di Negeri Sembilan", "Adat Perpatih melarang perpecahan tanah, manakala Adat Temenggung mengharamkan perkahwinan sesuku", "Tiada perbezaan ketara antara kedua-dua adat tersebut"], correct: 0, hint: "Fikirkan tentang sistem nasab atau jurai keturunan (matrilinear vs patrilinear).", rationale: "Adat Perpatih mengutamakan jurai keturunan ibu manakala Adat Temenggung mengamalkan sistem bapa." },
+            { question: "Kerajaan awal manakah yang terkenal dengan pengaruh Hindu-Buddha di Lembah Bujang?", options: ["Kedah Tua", "Melaka", "Johor Riau", "Selangor"], correct: 0, hint: "Pusat arkeologi Hindu-Buddha terawal di Semenanjung Tanah Melayu terletak di utara.", rationale: "Kedah Tua merupakan pusat perdagangan dan tamadun awal Hindu-Buddha yang penting." },
+            { question: "Apakah sistem pemerintahan yang diamalkan di bawah pengaruh Hindu-Buddha di Nusantara?", options: ["Sistem Dewa-Raja", "Sistem Demokrasi Berparlimen", "Sistem Republik", "Sistem Kedaulatan Rakyat"], correct: 0, hint: "Raja dianggap sebagai wakil tuhan di muka bumi.", rationale: "Konsep Dewa-Raja meletakkan kedudukan raja di tempat yang tinggi dan dianggap suci." },
+            { question: "Siapakah pengasas Kesultanan Melayu Melaka?", options: ["Parameswara", "Sultan Mansur Shah", "Tun Perak", "Bendahara Tun Perpateh Tajah"], correct: 0, hint: "Baginda berasal dari Palembang dan memilih Melaka kerana kedudukannya yang strategik.", rationale: "Parameswara mengasaskan Melaka sekitar tahun 1400." },
+            { question: "Apakah faktor utama kejayaan Melaka sebagai pusat perdagangan antarabangsa?", options: ["Kedudukan geografi yang strategik di laluan Selat Melaka dan terlindung daripada angin monsun", "Penggunaan mata wang emas sepenuhnya dari Eropah", "Dasar menutup pintu kepada pedagang asing", "Kekuatan tentera laut British"], correct: 0, hint: "Perhatikan faktor tiupan angin monsun timur laut dan barat daya.", rationale: "Lokasi Melaka yang strategik di tengah laluan perdagangan Timur dan Barat." },
+            { question: "Apakah peranan penting jawatan 'Syahbandar' di pelabuhan Melaka?", options: ["Menguruskan hal ehwal perdagangan dan pedagang asing di pelabuhan", "Menjadi panglima tentera darat Melaka", "Menjaga keselamatan peribadi Sultan Melaka", "Menulis karya sastera agung kerajaan"], correct: 0, hint: "Mereka bertindak sebagai pegawai pelabuhan yang menjaga kebajikan pedagang.", rationale: "Syahbandar bertanggungjawab melicinkan urusan perdagangan dan kutipan cukai." },
+            { question: "Tahun berapakah Melaka tewas di tangan serangan Portugis di bawah pimpinan Alfonso de Albuquerque?", options: ["1511", "1400", "1641", "1786"], correct: 0, hint: "Abad ke-16 awal, iaitu tepatnya pada tahun 1511.", rationale: "Melaka tewas kepada serangan Portugis pada tahun 1511." },
+            { question: "Selepas kejatuhan Melaka, pusat pemerintahan warisan Melaka telah diasaskan di negeri manakah?", options: ["Johor", "Perlis", "Kelantan", "Sabah"], correct: 0, hint: "Sultan Mahmud Shah membina pusat pemerintahan baru di selatan semenanjung.", rationale: "Kesultanan Johor Riau diasaskan oleh waris Kesultanan Melayu Melaka." },
+            { question: "Apakah nama karya sastera agung yang dikarang oleh Tun Sri Lanang semasa era Kesultanan Johor Riau?", options: ["Sulalatus Salatin (Sejarah Melayu)", "Tuhfat al-Nafis", "Hikayat Hang Tuah", "Taj al-Salatin"], correct: 0, hint: "Kitab ini merakamkan susur galur salasilah Raja-raja Melaka.", rationale: "Sulalatus Salatin merupakan karya agung persuratan Melayu yang diselenggara oleh Tun Sri Lanang." },
+            { question: "Apakah matlamat utama 'Perang Tiga Segi' yang melibatkan Johor, Acheh, dan Portugis?", options: ["Menguasai perdagangan dan monopoli rempah ratus di Selat Melaka", "Berebut jajahan takluk di Kepulauan Borneo", "Mencari kawasan perlombongan bijih timah baru", "Menyebarkan agama Kristian di rantau Nusantara"], correct: 0, hint: "Perebutan penguasaan laluan air yang strategik.", rationale: "Perang Tiga Segi berlaku kerana persaingan menguasai Selat Melaka." },
+            { question: "Bagaimanakah Kesultanan Perak diasaskan pada abad ke-16?", options: ["Atas jemputan pembesar Perak yang meminta putera Sultan Mahmud Shah ditabalkan sebagai Sultan Perak", "Melalui penaklukan ketenteraan oleh tentera Siam", "Dibuka oleh pelombong dari China", "Dibentuk selepas perpecahan Kesultanan Kedah"], correct: 0, hint: "Raja Muzaffar Shah dijemput untuk menjadi pemerintah.", rationale: "Kesultanan Perak diasaskan atas jemputan pembesar Perak." },
+            { question: "Siapakah pengasas kepada Kesultanan Selangor moden yang berasal daripada keturunan Bugis?", options: ["Raja Lumu (Sultan Salehuddin Shah)", "Tun Zainal Abidin", "Long Yunus", "Syed Hussin Jamalullail"], correct: 0, hint: "Baginda ditabalkan dengan gelaran Sultan Salehuddin Shah.", rationale: "Raja Lumu ditabalkan sebagai Sultan Selangor pertama." },
+            { question: "Kesultanan Terengganu diasaskan pada awal abad ke-18 oleh siapa?", options: ["Tun Zainal Abidin (putera Bendahara Paduka Raja Johor)", "Sultan Mansur Shah", "Raja Melewar", "Long Gaffar"], correct: 0, hint: "Baginda mempunyai pertalian darah dengan pembesar Kesultanan Johor Riau.", rationale: "Kesultanan Terengganu diasaskan oleh Tun Zainal Abidin pada tahun 1708." },
+            { question: "Apakah kepentingan Lembah Bujang kepada sejarah Kesultanan Kedah awal?", options: ["Sebagai pusat perdagangan antarabangsa dan pusat keagamaan Hindu-Buddha terawal", "Sebagai tempat perlindungan utama Sultan Melaka", "Sebagai kawasan perlombongan emas terbesar di Tanah Melayu", "Sebagai kubu pertahanan menentang British"], correct: 0, hint: "Kawasan penemuan candi purba di Kedah.", rationale: "Lembah Bujang terkenal sebagai pusat pelabuhan entrepot purba." },
+            { question: "Bagaimanakah sistem pemerintahan di Negeri Sembilan unik berbanding negeri lain?", options: ["Mengamalkan pemilihan pemimpin (Yang di-Pertuan Besar) melalui permuafakatan Undang", "Pemerintahan mutlak tanpa penglibatan luak", "Mengamalkan sistem pewarisan takhta bapa kepada anak lelaki sulung", "Diterajui sepenuhnya oleh Gabenor British"], correct: 0, hint: "Empat Luak dan Undang memainkan peranan penting.", rationale: "Negeri Sembilan unik kerana mengamalkan Adat Perpatih." },
+            { question: "Siapakah tokoh yang menyatukan wilayah-wilayah kecil di Kelantan pada abad ke-18?", options: ["Long Yunus", "Long Gaffar", "Syed Hussin", "Raja Melewar"], correct: 0, hint: "Baginda menjadikan Kota Bharu sebagai pusat pentadbiran utamanya.", rationale: "Long Yunus berjaya menyatukan wilayah Kelantan." },
+            { question: "Negeri Perlis pada awalnya merupakan sebahagian daripada wilayah takluk negeri manakala?", options: ["Kedah", "Perak", "Pahang", "Johor"], correct: 0, hint: "Terletak di sebelah utara Semenanjung bersempadan dengan Thailand.", rationale: "Perlis dahulunya sebahagian daripada wilayah Kedah." },
+            { question: "Apakah ancaman luar utama yang dihadapi oleh Kedah pada akhir abad ke-18 dan awal abad ke-19?", options: ["Ancaman kuasa Siam", "Serangan tentera Sepanyol", "Penjajahan Belanda sepenuhnya", "Serangan tentera Majapahit"], correct: 0, hint: "Negara jiran di sebelah utara Semenanjung.", rationale: "Kedah menghadapi tekanan dan ancaman politik daripada Siam." },
+            { question: "Apakah peranan penting 'Adat Perpatih' dalam kalangan masyarakat Negeri Sembilan?", options: ["Menitikberatkan perpaduan sukunya dan pemilikan harta pusaka melalui susur galur ibu", "Menggalakkan pemusatan kuasa mutlak pada tangan seorang raja", "Menetapkan hukuman denda yang sama rata tanpa mengira suku", "Mengharamkan sebarang aktiviti pertanian di tanah adat"], cl; Edisi Hijau Moden 2026
     </footer>
 
     <!-- Script Logik Kuiz -->
